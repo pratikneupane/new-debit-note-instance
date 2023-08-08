@@ -4,17 +4,26 @@ interface LabelProps {
   label: string;
   required: boolean;
 }
-const Label = (props: LabelProps) => {
-  const { label, required } = props;
+
+/**
+ * Label Component
+ *
+ * A component to render a label with an optional asterisk for required fields.
+ *
+ * @component
+ * @param {LabelProps} props - Component props
+ * @returns {JSX.Element} Label component.
+ */
+const Label: React.FC<LabelProps> = ({ label, required }) => {
   return (
-    <div className="flex flex-row justify-between w-1/2 items-center">
+    <div className="flex flex-row justify-between w-1/2 items-center mb-2">
       <label className="whitespace-nowrap text-xs leading-[16px] text-primary w-20">
         {label}
-        {required ? (
+        {required && (
           <span className="text-xs tracking-[0.07] leading-[13px] text-red w-1 shrink-0">
             *
           </span>
-        ) : null}
+        )}
       </label>
     </div>
   );

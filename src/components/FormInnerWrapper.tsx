@@ -4,9 +4,17 @@ import ProductList from "./ProductList";
 import CustomFields from "./CustomFields";
 import Footer from "./Footer";
 
-const FormInnerWrapper = () => {
+/**
+ * FormInnerWrapper Component
+ *
+ * A component to wrap the inner content of a form.
+ *
+ * @component
+ * @returns {JSX.Element} FormInnerWrapper component.
+ */
+const FormInnerWrapper: React.FC = (): JSX.Element => {
   return (
-    <div className="flex flex-col gap-4 w-full items-start">
+    <div className="flex flex-col gap-4 w-full items-start px-6">
       <div className="w-full flex gap-2 items-start">
         <InputGroup
           label={"Supplier Name"}
@@ -17,10 +25,23 @@ const FormInnerWrapper = () => {
         <InputGroup label={"Date"} required={true} type="date" />
       </div>
       <div className=" w-1/2 self-stretch flex gap-2 items-start">
-        <InputGroup label={"Reference"} required={true} type="text" />
+        <InputGroup
+          label={"Reference"}
+          required={true}
+          type="text"
+          placeholder={"Enter Reference"}
+        />
       </div>
       <ProductList />
       <CustomFields />
+      <div className=" w-full self-stretch flex gap-2 items-start">
+        <InputGroup
+          label={"Terms & Conditions"}
+          required={false}
+          type="textarea"
+          placeholder={"Enter Notes"}
+        />
+      </div>
       <Footer />
     </div>
   );

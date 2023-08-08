@@ -1,7 +1,16 @@
-// components/CustomDropdown.tsx
 import React, { useState, useRef } from "react";
 import useClickAwayListener from "@/hooks/useClickAwayListener";
 
+/**
+ * CustomDropdown Component
+ *
+ * A reusable dropdown input component that filters and displays options as the user types.
+ *
+ * @component
+ * @param {object} props - Component props
+ * @param {string[]} props.options - List of options for the dropdown.
+ * @returns {JSX.Element} CustomDropdown component.
+ */
 const CustomDropdown: React.FC<{ options: string[] }> = ({ options }) => {
   const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -9,6 +18,12 @@ const CustomDropdown: React.FC<{ options: string[] }> = ({ options }) => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  /**
+   * Handle input change event.
+   * Updates the input value and filters options based on user input.
+   *
+   * @param {React.ChangeEvent<HTMLInputElement>} event - Input change event.
+   */
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newInputValue = event.target.value.toLowerCase();
     const filtered = options.filter((option) =>
@@ -20,6 +35,12 @@ const CustomDropdown: React.FC<{ options: string[] }> = ({ options }) => {
     setShowDropdown(true);
   };
 
+  /**
+   * Handle option selection.
+   * Sets the selected option and updates input value, then hides the dropdown.
+   *
+   * @param {string} option - Selected option.
+   */
   const handleOptionSelect = (option: string) => {
     setSelectedOption(option);
     setInputValue(option);
@@ -27,6 +48,7 @@ const CustomDropdown: React.FC<{ options: string[] }> = ({ options }) => {
     setShowDropdown(false);
   };
 
+  // Close the dropdown when clicking away from it
   useClickAwayListener(dropdownRef, () => {
     setShowDropdown(false);
   });
@@ -34,9 +56,9 @@ const CustomDropdown: React.FC<{ options: string[] }> = ({ options }) => {
   return (
     <div className="relative w-full" ref={dropdownRef}>
       <input
-        className="border p-2 rounded-md w-full focus:outline-none focus:border-primary"
+        className="overflow-hidden bg-input flex flex-row justify-between w-full h-12 items-center px-4 text-xs rounded-lg outline-none"
         type="text"
-        placeholder="Select an option..."
+        placeholder="Eg. Globex Corporation"
         onChange={handleInputChange}
         onFocus={() => setShowDropdown(true)}
         value={inputValue}

@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         primary: "#00171f",
         red: "#ef233c",
+        input: "#f0f0f0",
       },
       fontFamily: {
         sans: ['DM Sans', 'sans-serif'],

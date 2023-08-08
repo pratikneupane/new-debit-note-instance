@@ -1,12 +1,12 @@
 import FormWrapper from "@/components/FormWrapper";
 import { NextPage } from "next";
 
-const  Home: NextPage = () => {
+const Home: NextPage = (): JSX.Element => {
   return (
-   <div>
-    <FormWrapper/>
-   </div>
-  )
-}
+    <div>
+      <FormWrapper />
+    </div>
+  );
+};
 
 export default Home;
