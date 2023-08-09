@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import ProductItem from "./ProductItem"; // Import your ProductItem component
+import ProductItem from "./ProductItem";
 import products from "@/constants/products";
+import Image from "next/image";
 
 interface Product {
   name: string;
@@ -24,10 +25,12 @@ const ModalContent: React.FC<ModalContentProps> = ({ closeModal, onSelect }) => 
     <div className="bg-white flex flex-col gap-px w-full pt-4 px-4 rounded-lg max-h-[400px] overflow-auto">
       {/* Search product section */}
       <div className="bg-[#f0f0f0] flex flex-row mb-2 gap-2 h-10 shrink-0 items-center px-3 rounded-lg">
-        <img
+        <Image
           src="https://file.rendit.io/n/TeGLsGwqAzoMP2hO18bj.svg"
           className="w-4 shrink-0"
           alt="Search icon"
+          height={5}
+        width={5}
         />
         <input
           type="text"

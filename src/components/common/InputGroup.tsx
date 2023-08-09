@@ -9,6 +9,7 @@ interface InputGroupProps {
   type?: "text" | "dropdown" | "date" | "textarea";
   options?: string[];
   placeholder?: string;
+  rows?: number; // Add the rows prop
 }
 
 /**
@@ -26,6 +27,7 @@ const InputGroup: React.FC<InputGroupProps> = ({
   type = "text",
   options,
   placeholder,
+  rows = 1, // Default value for rows is 1
 }) => {
   /**
    * Render input field based on the provided type prop.
@@ -50,8 +52,8 @@ const InputGroup: React.FC<InputGroupProps> = ({
         return (
           <textarea
             placeholder={placeholder}
-            className={`bg-input text-xs w-full h-12 px-4 py-2 rounded-lg resize-none outline-none`}
-            rows={2}
+            className={`bg-input text-xs w-full px-4 py-2 rounded-lg resize-none outline-none`}
+            rows={rows} // Use the dynamic rows prop
           ></textarea>
         );
       default:

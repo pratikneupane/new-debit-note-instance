@@ -4,7 +4,7 @@ import Button from "./common/Button";
 const Footer = () => {
   return (
     <div className="bg-white flex flex-col justify-center pr-6 w-full h-20 items-end">
-        <Button/>
+      <Button />
     </div>
   );
 };

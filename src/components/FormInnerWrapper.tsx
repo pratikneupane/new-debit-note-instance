@@ -40,9 +40,9 @@ const FormInnerWrapper: React.FC = (): JSX.Element => {
           required={false}
           type="textarea"
           placeholder={"Enter Notes"}
+          rows={3}
         />
       </div>
-      <Footer />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react'
 import FormHeader from './FormHeader'
 import FormInnerWrapper from './FormInnerWrapper'
+import Footer from './Footer';
 
 /**
  * FormWrapper Component
@@ -15,6 +16,7 @@ const FormWrapper: React.FC = () : JSX.Element => {
     <div>
       <FormHeader />
       <FormInnerWrapper />
+      <Footer/>
     </div>
   );
 }
