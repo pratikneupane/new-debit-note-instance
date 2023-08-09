@@ -4,7 +4,7 @@ import { NextPage } from "next";
 
 const Home: NextPage = (): JSX.Element => {
   return (
-    <div>
+    <div className="h-full w-full flex items-center justify-center">
       <FormWrapper />
     </div>
   );

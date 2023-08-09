@@ -8,11 +8,11 @@ interface DropdownProps {
 const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const { options } = props;
   const [selectedOption, setSelectedOption] = useState(options[0]);
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false); // New state
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
   const handleOptionChange = (option: string) => {
     setSelectedOption(option);
-    toggleDropdown(); // Close the dropdown after selecting an option
+    toggleDropdown();
   };
 
   const toggleDropdown = () => {
@@ -20,10 +20,10 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   };
 
   return (
-    <div className="relative inline-block">
+    <div className="relative inline-block z-[100]"> {/* Increase the z-index value */}
       <div
-        className="flex flex-row justify-center w-full h-12 items-center cursor-pointer"
-        onClick={toggleDropdown} // Toggle dropdown visibility
+        className="flex flex-row justify-center w-full h-6 items-center cursor-pointer"
+        onClick={toggleDropdown}
       >
         <div className="whitespace-nowrap text-xs font-['DM_Sans'] leading-[16px] text-[#00171f] w-8 shrink-0">
           {selectedOption}
@@ -37,7 +37,7 @@ const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         />
       </div>
       {isDropdownVisible && (
-        <ul className="absolute z-[10] left-0 mt-2 w-20 bg-white border border-gray-300 shadow-md rounded-md">
+        <ul className="left-0 w-20 bg-white border border-gray-300 shadow-md rounded-md z-[110]"> 
           {options.map((option, index) => (
             <li
               key={index}
