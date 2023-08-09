@@ -11,3 +11,26 @@
 .react-datepicker-wrapper {
     width: 100% !important;
 }
+
+/* custom-scrollbar.css */
+
+/* Hide default scrollbar */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #979797;
+  border-radius: 0.25rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
