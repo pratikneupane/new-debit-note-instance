@@ -1,5 +1,6 @@
 import React from "react";
 import Dropdown from "./common/Dropdown";
+import InputGroup from "./common/InputGroup";
 
 interface InvoiceSummaryProps {
   total: number;
@@ -13,14 +14,7 @@ const InvoiceSummary: React.FC<InvoiceSummaryProps> = ({
   return (
     <div className="bg-white flex flex-row justify-center pt-4 gap-16 w-full items-center">
       <div className="self-start flex flex-col justify-between gap-2 w-1/2 items-start">
-        <div className="text-xs font-medium leading-[16px] text-[#00171f]">
-          Note
-        </div>
-        <div className="bg-[#f0f0f0] self-stretch flex flex-col h-16 items-start pl-4 py-4 rounded-lg overflow-hidden">
-          <div className="whitespace-nowrap text-xs font-['DM_Sans'] leading-[16px] text-[#979797] w-16">
-            Enter notes
-          </div>
-        </div>
+        <InputGroup type="textarea" rows={4} label={"Note"} required={false} placeholder="Enter Notes"/>
         <div className="whitespace-nowrap text-xs font-['DM_Sans'] tracking-[0.07] leading-[13px] text-[#979797] w-32">
           *This will appear on print
         </div>

@@ -1,35 +1,19 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { FaCalendarAlt } from "react-icons/fa";
+import Image from "next/image";
 import { format } from "date-fns";
 
-/**
- * DateInput Component
- *
- * A reusable date input component that displays a date picker and formats selected dates.
- *
- * @component
- * @returns {JSX.Element} DateInput component.
- */
-const DateInput: React.FC = (): JSX.Element => {
+interface DateInputProps {}
+
+const DateInput: React.FC<DateInputProps> = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [inputValue, setInputValue] = useState<string>("");
 
-  /**
-   * Handle input change event.
-   * Updates the input value as the user types.
-   *
-   * @param {React.ChangeEvent<HTMLInputElement>} event - Input change event.
-   */
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
 
-  /**
-   * Handle input blur event.
-   * Parses the input value and updates the selected date on blur if valid.
-   */
   const handleInputBlur = () => {
     const parsedDate = new Date(inputValue);
     if (!isNaN(parsedDate.getTime())) {
@@ -37,12 +21,6 @@ const DateInput: React.FC = (): JSX.Element => {
     }
   };
 
-  /**
-   * Format date to "dd/MM/yyyy" format.
-   *
-   * @param {Date | null} date - Date to be formatted.
-   * @returns {string} Formatted date string.
-   */
   const formatDate = (date: Date | null): string => {
     return date ? format(date, "dd/MM/yyyy") : "";
   };
@@ -51,7 +29,7 @@ const DateInput: React.FC = (): JSX.Element => {
     <div className="flex items-center w-full">
       <DatePicker
         selected={selectedDate}
-        onChange={(date) => setSelectedDate(date)}
+        onChange={(date: Date | null) => setSelectedDate(date)}
         customInput={
           <div className="relative w-full">
             <input
@@ -63,7 +41,12 @@ const DateInput: React.FC = (): JSX.Element => {
               onBlur={handleInputBlur}
             />
             <div className="absolute right-5 top-[50%] -translate-y-1/2 p-2">
-              <FaCalendarAlt />
+              <Image
+                src="./calender.svg"
+                height={20}
+                width={20}
+                alt="Calendar Icon"
+              />
             </div>
           </div>
         }

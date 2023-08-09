@@ -1,24 +1,15 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
-import ProductItem, { ProductItemProps } from "./ProductItem"; // Import the ProductItemProps interface
 import SelectedProduct from "./SelectedProducts";
 import TableHeader from "./TableHeader";
 import InvoiceSummary from "./InvoiceSummary";
-
-/**
- * ProductList Component
- *
- * A component to display the product list header in a form.
- *
- * @component
- * @returns {JSX.Element} ProductList component.
- */
+import { ProductItemProps } from "./ProductItem";
 
 const ProductList: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [selectedProducts, setSelectedProducts] = useState<ProductItemProps[]>(
     []
-  ); // Array of selected products
+  );
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -29,7 +20,7 @@ const ProductList: React.FC = () => {
   };
 
   const handleProductSelect = (product: ProductItemProps) => {
-    setSelectedProducts([...selectedProducts, product]); // Add the selected product to the array
+    setSelectedProducts([...selectedProducts, product]);
   };
 
   const handleProductRemove = (index: number) => {
@@ -47,9 +38,7 @@ const ProductList: React.FC = () => {
               <SelectedProduct
                 key={index}
                 index={index}
-                name={product.name}
-                batch={product.batch}
-                amount={product.amount}
+                {...product}
                 onRemove={handleProductRemove}
               />
             ))}
@@ -58,7 +47,7 @@ const ProductList: React.FC = () => {
 
         <button
           onClick={openModal}
-          className=" whitespace-nowrap text-xs font-['DM_Sans'] leading-[16px] text-[#979797] ml-6 w-[117px] my-4"
+          className="whitespace-nowrap text-xs font-['DM_Sans'] leading-[16px] text-[#979797] ml-6 w-[117px] my-4"
         >
           Add code or product
         </button>

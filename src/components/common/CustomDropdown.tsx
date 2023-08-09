@@ -1,30 +1,19 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, ChangeEvent } from "react";
 import useClickAwayListener from "@/hooks/useClickAwayListener";
+import Image from "next/image";
 
-/**
- * CustomDropdown Component
- *
- * A reusable dropdown input component that filters and displays options as the user types.
- *
- * @component
- * @param {object} props - Component props
- * @param {string[]} props.options - List of options for the dropdown.
- * @returns {JSX.Element} CustomDropdown component.
- */
-const CustomDropdown: React.FC<{ options: string[] }> = ({ options }) => {
+interface CustomDropdownProps {
+  options: string[];
+}
+
+const CustomDropdown: React.FC<CustomDropdownProps> = ({ options }) => {
   const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState<string>("");
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  /**
-   * Handle input change event.
-   * Updates the input value and filters options based on user input.
-   *
-   * @param {React.ChangeEvent<HTMLInputElement>} event - Input change event.
-   */
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newInputValue = event.target.value.toLowerCase();
     const filtered = options.filter((option) =>
       option.toLowerCase().includes(newInputValue)
@@ -35,12 +24,6 @@ const CustomDropdown: React.FC<{ options: string[] }> = ({ options }) => {
     setShowDropdown(true);
   };
 
-  /**
-   * Handle option selection.
-   * Sets the selected option and updates input value, then hides the dropdown.
-   *
-   * @param {string} option - Selected option.
-   */
   const handleOptionSelect = (option: string) => {
     setSelectedOption(option);
     setInputValue(option);
@@ -48,7 +31,6 @@ const CustomDropdown: React.FC<{ options: string[] }> = ({ options }) => {
     setShowDropdown(false);
   };
 
-  // Close the dropdown when clicking away from it
   useClickAwayListener(dropdownRef, () => {
     setShowDropdown(false);
   });
@@ -62,6 +44,13 @@ const CustomDropdown: React.FC<{ options: string[] }> = ({ options }) => {
         onChange={handleInputChange}
         onFocus={() => setShowDropdown(true)}
         value={inputValue}
+      />
+      <Image
+        src="https://file.rendit.io/n/Rh1D1OboeMiJu2952HEP.svg"
+        className="w-4 ml-0 shrink-0 absolute bottom-4 right-4"
+        alt="Dropdown icon"
+        height={10}
+        width={10}
       />
       {showDropdown && filteredOptions.length > 0 && (
         <ul className="absolute bg-white border p-2 rounded-md mt-1 w-full shadow-md">

@@ -1,13 +1,5 @@
 import React from "react";
 
-/**
- * CustomFields Component
- *
- * A component to render a section for custom fields.
- *
- * @component
- * @returns {JSX.Element} CustomFields component.
- */
 const CustomFields: React.FC = () => {
   return (
     <div className="border-solid border-[#f0f0f0] bg-white flex flex-row justify-between w-full h-16 items-center border-t-0 border-b border-x-0">

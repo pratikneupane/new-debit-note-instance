@@ -16,7 +16,12 @@ interface ModalContentProps {
 }
 
 const ModalContent: React.FC<ModalContentProps> = ({ closeModal, onSelect }) => {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState<string>("");
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchValue.toLowerCase())
   );
@@ -24,20 +29,20 @@ const ModalContent: React.FC<ModalContentProps> = ({ closeModal, onSelect }) => 
   return (
     <div className="bg-white flex flex-col gap-px w-full pt-4 px-4 rounded-lg max-h-[400px] overflow-auto">
       {/* Search product section */}
-      <div className="bg-[#f0f0f0] flex flex-row mb-2 gap-2 h-10 shrink-0 items-center px-3 rounded-lg">
+      <div className="bg-[#f0f0f0] flex flex-row mb-2 h-10 shrink-0 items-center px-3 rounded-lg">
         <Image
           src="https://file.rendit.io/n/TeGLsGwqAzoMP2hO18bj.svg"
           className="w-4 shrink-0"
           alt="Search icon"
           height={5}
-        width={5}
+          width={5}
         />
         <input
           type="text"
           className="whitespace-nowrap text-xs font-['DM_Sans'] leading-[16px] text-[#979797] w-20 shrink-0 outline-none bg-transparent border-none"
           placeholder="Search product"
           value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={handleSearchChange}
         />
       </div>
 

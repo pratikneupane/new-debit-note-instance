@@ -5,15 +5,6 @@ interface LabelProps {
   required: boolean;
 }
 
-/**
- * Label Component
- *
- * A component to render a label with an optional asterisk for required fields.
- *
- * @component
- * @param {LabelProps} props - Component props
- * @returns {JSX.Element} Label component.
- */
 const Label: React.FC<LabelProps> = ({ label, required }) => {
   return (
     <div className="flex flex-row justify-between w-1/2 items-center mb-2">

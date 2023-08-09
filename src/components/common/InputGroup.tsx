@@ -9,38 +9,24 @@ interface InputGroupProps {
   type?: "text" | "dropdown" | "date" | "textarea";
   options?: string[];
   placeholder?: string;
-  rows?: number; // Add the rows prop
+  rows?: number;
 }
 
-/**
- * InputGroup Component
- *
- * A versatile component that renders different types of input fields based on the provided type prop.
- *
- * @component
- * @param {InputGroupProps} props - Component props
- * @returns {JSX.Element} InputGroup component.
- */
 const InputGroup: React.FC<InputGroupProps> = ({
   label,
   required,
   type = "text",
   options,
   placeholder,
-  rows = 1, // Default value for rows is 1
+  rows = 1,
 }) => {
-  /**
-   * Render input field based on the provided type prop.
-   *
-   * @returns {ReactNode} Rendered input field.
-   */
   const renderInput = (): ReactNode => {
     switch (type) {
       case "text":
         return (
           <input
             placeholder={placeholder}
-            className={`bg-input text-xs w-full h-12 px-4 rounded-lg outline-none`}
+            className="bg-input text-xs w-full h-12 px-4 rounded-lg outline-none"
             type="text"
           />
         );
@@ -52,8 +38,8 @@ const InputGroup: React.FC<InputGroupProps> = ({
         return (
           <textarea
             placeholder={placeholder}
-            className={`bg-input text-xs w-full px-4 py-2 rounded-lg resize-none outline-none`}
-            rows={rows} // Use the dynamic rows prop
+            className="bg-input text-xs w-full px-4 py-2 rounded-lg resize-none outline-none"
+            rows={rows}
           ></textarea>
         );
       default:
