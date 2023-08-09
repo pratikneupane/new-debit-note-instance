@@ -1,18 +1,9 @@
-import React, { FC } from "react";
+import React from "react";
 
-interface ButtonProps {
-  label: string;
-  bgColor?: string;
-  textColor?: string;
-  padding?: string;
-}
-
-const Button: FC<ButtonProps> = ({ label, bgColor = "#00a8e8", textColor = "white", padding = "12" }) => {
+const Button = () => {
   return (
-    <button
-      className={`bg-${bgColor} text-${textColor} px-${padding} py-${padding} flex flex-col justify-center items-center rounded-lg`}
-    >
-      {label}
+    <button className="bg-[#00a8e8] text-white px-[40px] py-[12px] flex flex-col justify-centeritems-center rounded-lg">
+      Save
     </button>
   );
 };
